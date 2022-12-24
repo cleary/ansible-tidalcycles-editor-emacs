@@ -1,0 +1,3 @@
+(add-to-list 'load-path "~/.local/share/ansible-tidalcycles")
+(require 'haskell-mode)
+(require 'tidal)

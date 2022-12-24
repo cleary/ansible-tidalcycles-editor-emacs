@@ -1,0 +1,9 @@
+---
+- name: install required packages
+  apt:
+    state: latest
+    update_cache: yes
+    install_recommends: no
+    name: [ 'emacs',
+            'emacs-el',
+            'haskell-mode' ]

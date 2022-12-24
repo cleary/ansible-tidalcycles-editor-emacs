@@ -1,0 +1,35 @@
+---
+
+- block:
+  - name: create directory for tidal.el
+    file:
+      path: "/home/{{ansible_env.SUDO_USER}}/.local/share/ansible-tidalcycles"
+      state: directory
+      mode: 0755
+  
+  - name: download tidal.el
+    get_url:
+      url: https://raw.github.com/tidalcycles/Tidal/master/tidal.el
+      dest: /home/bernie/.local/share/ansible-tidalcycles/tidal.el
+
+  - name: create ~/.emacs
+    template:
+      src: templates/dot.emacs.template
+      dest: "/home/{{ansible_env.SUDO_USER}}/.emacs"
+      mode: 0640
+      backup: yes
+
+  become: yes
+  become_method: su
+  become_user: "{{ansible_env.SUDO_USER}}"
+  become_flags: '-s /bin/bash'
+  tags:
+  - config
+
+- include_role:
+    name: "roles/ugens-{{ item }}"
+  vars:
+    editor: "{{ emacs.editor }}"
+  with_items: "{{ sc_ugens }}"
+  when: sc_ugens is defined
+
