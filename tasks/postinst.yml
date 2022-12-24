@@ -10,7 +10,7 @@
   - name: download tidal.el
     get_url:
       url: https://raw.github.com/tidalcycles/Tidal/master/tidal.el
-      dest: /home/bernie/.local/share/ansible-tidalcycles/tidal.el
+      dest:  "/home/{{ansible_env.SUDO_USER}}/.local/share/ansible-tidalcycles"
 
   - name: create ~/.emacs
     template:
