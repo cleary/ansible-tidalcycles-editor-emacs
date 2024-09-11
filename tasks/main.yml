@@ -1,7 +1,7 @@
 ---
 
-#- include: preinst.yml
+#- include_tasks: preinst.yml
 
-- include: install.yml
+- include_tasks: install.yml
 
-- include: postinst.yml
+- include_tasks: postinst.yml
