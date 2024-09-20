@@ -1,9 +1,9 @@
 ---
-- name: install required packages
+- name: install common emacs packages
   apt:
     state: latest
     update_cache: yes
     install_recommends: no
     name: [ 'emacs',
-            'emacs-el',
-            'haskell-mode' ]
+            'emacs-el'
+            'elpa-haskell-mode' ]
