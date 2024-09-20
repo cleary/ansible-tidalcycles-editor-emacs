@@ -5,5 +5,5 @@
     update_cache: yes
     install_recommends: no
     name: [ 'emacs',
-            'emacs-el'
+            'emacs-el',
             'elpa-haskell-mode' ]
